@@ -1,25 +1,25 @@
 <!doctype html>
-<html> 
-    <head>
-        <meta charset= 'UTF-8'>
-        <title>Payment Aria</title>
+<html>
 
-    </head>
-    <body>
-        <div class = 'checkout_form'>
-            <form action="/getCardToken" method="POST">
-  <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="pk_test_i0mAS5A7uVZDTpDWkbNkAIt7"
-    data-amount="999"
-    data-name="Demo Site"
-    data-description="Widget"
-    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-    data-locale="auto"
-    data-currency="cad"
-    data-zip-code="true">
-  </script>
-</form>
-        </div>
-    </body>
+<head>
+    <meta charset='UTF-8'>
+    <title>Payment Aria</title>
+
+</head>
+
+<body>
+    <div class='checkout_form'>
+
+        <input type="amount" id='amount' placeholder ='Amount to pay'>
+        <button id="pay">PAY NOW</button>
+    </div>
+    <script src="https://checkout.stripe.com/checkout.js">
+
+    </script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="/javascripts/handler.js"></script>
+
+
+</body>
+
 </html>

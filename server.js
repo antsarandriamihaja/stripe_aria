@@ -18,31 +18,30 @@ app.get('/', (req, res) => {
 })
 
 app.post('/getCardToken', (req, res) => {
-    //amount in cents
-    var amount = 10000;
-   
-    //create a customer
+ 
+    var response = req.body.chargeData;
     stripe.customers.create({
-        email: req.body.stripeEmail,
-        source: req.body.stripeToken
+        email: response.email,
+        source: response.id
     })
-    //charge the customer's card
-    .then((customer) => {
-         stripe.charges.create({
-            amount,
-            currency: 'cad',
-            description: 'playing with api',
-            customer: customer.id
+        .then((customer) => {
+            stripe.charges.create({
+                amount: response.amount,
+                currency: 'cad',
+                description: 'Therapy charge',
+                customer: customer.id
+            })
         })
-    })
-    .catch((err)=>{
-        console.log(`There was an error: ${err}`);
-    })
-    .then(()=>{
-        res.render(path.join(__dirname, './views/success.hbs'));
-    })
+        .catch((err) => {
+            console.log(`There was an error: ${err}`);
+        })
+        res.status(201).send('Payment Successful');
 })
 
+app.get('/success', (req, res)=>{
+    console.log('success called')
+    res.render(path.join(__dirname, './views/success.hbs'));
+})
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`)
