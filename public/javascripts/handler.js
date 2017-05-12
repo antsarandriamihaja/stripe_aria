@@ -2,7 +2,7 @@
 
 var handler = StripeCheckout.configure({
     key: 'pk_test_i0mAS5A7uVZDTpDWkbNkAIt7',
-    image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+    image: 'http://apparia.co/img/aria-black.png',
   locale: 'auto',
   token: function(token){
       //token ID to use for server-side
